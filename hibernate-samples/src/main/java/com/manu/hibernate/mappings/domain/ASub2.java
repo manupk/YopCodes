@@ -1,17 +1,32 @@
 package com.manu.hibernate.mappings.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "A_Sub2")
 public class ASub2 {
-	Integer as2Id;
-	Integer aId;
-	String subName;
-	AMain parent;
-	
-	
+
+	@Id
+	@Column(name = "as2_id")
+	@GeneratedValue
+	private Integer as2Id;
+
+	@Column(name = "sub_name")
+	private String subName;
+
+	@ManyToOne
+	private AMain parent;
+
 	public ASub2(String subName) {
 		super();
 		this.subName = subName;
 	}
-	
+
 	public ASub2() {
 		super();
 	}
@@ -19,33 +34,31 @@ public class ASub2 {
 	public AMain getParent() {
 		return parent;
 	}
-	
+
 	public void setParent(AMain parent) {
 		this.parent = parent;
 	}
+
 	public Integer getAs2Id() {
 		return as2Id;
 	}
+
 	public void setAs2Id(Integer as2Id) {
 		this.as2Id = as2Id;
 	}
-	public Integer getaId() {
-		return aId;
-	}
-	public void setaId(Integer aId) {
-		this.aId = aId;
-	}
+
 	public String getSubName() {
 		return subName;
 	}
+
 	public void setSubName(String subName) {
 		this.subName = subName;
 	}
-	
+
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return " ASub2 with Id:"+as2Id+" Name:"+subName+" Parent:"+parent;
+		return " ASub2 with Id:" + as2Id + " Name:" + subName + " Parent:"
+				+ parent;
 	}
 
 }

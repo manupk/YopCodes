@@ -5,8 +5,10 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -32,13 +34,14 @@ public class AMain {
 
 	@OneToOne(mappedBy="parent")
 	private ASub1 one2oneSubA1;
-	@Transient
+	
+	@OneToMany(fetch=FetchType.EAGER)
 	Set<ASub2> subSets;
+	
+	//@OneToMany(fetch=FetchType.EAGER)
 	@Transient
 	List<ASub3> subList;
-	@Transient
-	RefOnlyAMain one2oneSubRef;
-
+	
 	public AMain(String name) {
 		this.name = name;
 	}
@@ -54,14 +57,6 @@ public class AMain {
 	public AMain(List<ASub3> subList) {
 		super();
 		this.subList = subList;
-	}
-
-	public RefOnlyAMain getOne2oneSubRef() {
-		return one2oneSubRef;
-	}
-
-	public void setOne2oneSubRef(RefOnlyAMain one2oneSubRef) {
-		this.one2oneSubRef = one2oneSubRef;
 	}
 
 	public List<ASub3> getSubList() {
