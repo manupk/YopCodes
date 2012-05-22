@@ -17,7 +17,7 @@ public class HomeController {
 			.getLogger(HomeController.class);
 
 	@Autowired
-	private HomeService buswayService;
+	private HomeService homeService;
 
 	@Autowired
 	private MessageSource messageSource;
